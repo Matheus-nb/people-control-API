@@ -2,20 +2,24 @@ package com.api.peoplecontrol.domain.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "TB_PEOPLE")
 public class PeopleModel implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public PeopleModel() {
+        this.createdAt = LocalDateTime.now(ZoneId.of("UTC"));
+        this.updatedAt = LocalDateTime.now(ZoneId.of("UTC"));
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +32,7 @@ public class PeopleModel implements Serializable {
     private String name;
 
     @Column(nullable = false)
-    private int age;
+    private Integer age;
 
     @Column(nullable = false, unique = true)
     private String email;

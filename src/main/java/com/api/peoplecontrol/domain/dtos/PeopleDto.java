@@ -1,29 +1,30 @@
 package com.api.peoplecontrol.domain.dtos;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Getter
-@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class PeopleDto {
 
-    @NotBlank
+    @NotEmpty(message = "CPF necessário")
     @Size(min = 14, max = 14)
     private String cpf;
 
-    @NotBlank
+    @NotEmpty(message = "Nome necessário")
     private String name;
 
-    @NotNull
-    private int age;
+    @NotNull(message = "Idade necessária")
+    private Integer age;
 
-    @NotBlank
+    @NotEmpty(message = "E-mail necessário")
     private String email;
 
-    @NotBlank
+    @NotEmpty(message = "Profissão necessária")
     private String profession;
 }

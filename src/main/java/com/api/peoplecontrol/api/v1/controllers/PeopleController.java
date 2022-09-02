@@ -47,7 +47,7 @@ public class PeopleController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Object> getPerson(@PathVariable(value = "uuid") UUID uuid) throws UuidNotFoundException {
+    public ResponseEntity<Object> getPerson(@PathVariable(value = "uuid") UUID uuid) throws UuidNotFoundException{
 
         Optional<PeopleModel> peopleModelOptional = peopleService.findByUuid(uuid);
 
